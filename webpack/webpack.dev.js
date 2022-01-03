@@ -4,6 +4,9 @@ const path = require("path");
 module.exports = merge(common, {
   devtool: "eval-cheap-module-source-map", // development
   mode: "development",
+  optimization: {
+    usedExports: true,
+  },
   devServer: {
     port: 8686,
     static: {
