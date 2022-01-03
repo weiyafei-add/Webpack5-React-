@@ -4,7 +4,6 @@ const miniSvgDataUri = require("mini-svg-data-uri");
 const paths = require("./paths");
 
 module.exports = {
-  mode: "production",
   resolve: {
     extensions: [".js", ".ts", ".tsx", ".jsx"],
   },
@@ -16,6 +15,7 @@ module.exports = {
     filename: "[name].bundle.js",
     // 静态文件打包后的路径
     assetModuleFilename: "assets/[name]_[hash][ext]",
+    clean: true,
   },
   module: {
     rules: [
@@ -104,6 +104,5 @@ module.exports = {
       template: paths.src + "/index.html", //template file
       filename: "index.html", // output file
     }),
-    new CleanWebpackPlugin(),
   ],
 };
