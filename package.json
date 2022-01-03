@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.16.7",
+    "@babel/runtime-corejs3": "^7.16.7",
     "postcss-less": "^5.0.0",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.4",
@@ -23,6 +25,7 @@
     "@babel/core": "^7.16.7",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/plugin-proposal-object-rest-spread": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
     "autoprefixer": "^10.4.1",
     "babel-loader": "^8.2.3",
