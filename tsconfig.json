@@ -1,8 +1,13 @@
 {
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "./type.d.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "target": "ES5",
-    "module": "esnext"
+    "module": "esnext",
+    "noImplicitAny": false, // 允许any
+    "allowJs": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
   }
 }

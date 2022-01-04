@@ -1,25 +1,30 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const miniSvgDataUri = require("mini-svg-data-uri");
 const paths = require("./paths");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const cssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 module.exports = {
   resolve: {
     extensions: [".js", ".ts", ".tsx", ".jsx"],
   },
   entry: {
-    main: [paths.src + "/index.js"],
+    main: [paths.src + "/index.tsx"],
   },
   output: {
     path: paths.build,
-    filename: "./js/[name]_bundle.js",
+    filename: "./js/[name]_[contenthash:8]_bundle.js",
     // 静态文件打包后的路径
-    assetModuleFilename: "assets/[name]_[hash][ext]",
+    assetModuleFilename: "assets/[name]_[contenthash:8][ext]",
     clean: true,
-    chunkFilename: "./js/[name]_chunk.js",
+    chunkFilename: "./js/[name]_[contenthash:8]_chunk.js",
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: ["ts-loader"],
+      },
       {
         test: /\.less$/i,
         use: [
@@ -62,7 +67,7 @@ module.exports = {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         type: "asset",
         generator: {
-          filename: "assets/images/[hash][ext]",
+          filename: "assets/images/[name]_[contenthash:8][ext]",
         },
         parser: {
           dataUrlCondition: {
@@ -89,7 +94,7 @@ module.exports = {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
         type: "asset",
         generator: {
-          filename: "assets/fonts/[hash][ext]",
+          filename: "assets/fonts/[name]_[contenthash:8][ext]",
         },
       },
       // 数据文件
@@ -99,12 +104,18 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    minimizer: ["...", new cssMinimizerWebpackPlugin()], // 此配置将仅在生产环境开启css优化
+    // minimize: true  开启此项，开发环境也会优化css
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: "webpack template",
       template: paths.src + "/index.html", //template file
       filename: "index.html", // output file
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "css/[name]-[contenthash:8].bundle.css",
+    }),
   ],
 };
