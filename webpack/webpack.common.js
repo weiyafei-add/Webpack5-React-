@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const miniSvgDataUri = require("mini-svg-data-uri");
 const paths = require("./paths");
-
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   resolve: {
     extensions: [".js", ".ts", ".tsx", ".jsx"],
@@ -12,17 +12,18 @@ module.exports = {
   },
   output: {
     path: paths.build,
-    filename: "[name].bundle.js",
+    filename: "./js/[name]_bundle.js",
     // 静态文件打包后的路径
     assetModuleFilename: "assets/[name]_[hash][ext]",
     clean: true,
+    chunkFilename: "./js/[name]_chunk.js",
   },
   module: {
     rules: [
       {
         test: /\.less$/i,
         use: [
-          "style-loader",
+          { loader: MiniCssExtractPlugin.loader },
           {
             loader: "css-loader",
             options: {
@@ -34,9 +35,9 @@ module.exports = {
         ],
       },
       {
-        test: /\.s?css$/i,
+        test: /\.(s?[ca]ss)$/i,
         use: [
-          "style-loader",
+          { loader: MiniCssExtractPlugin.loader },
           {
             loader: "css-loader",
             options: {
@@ -61,7 +62,7 @@ module.exports = {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         type: "asset",
         generator: {
-          filename: "images/[hash][ext]",
+          filename: "assets/images/[hash][ext]",
         },
         parser: {
           dataUrlCondition: {
@@ -88,7 +89,7 @@ module.exports = {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
         type: "asset",
         generator: {
-          filename: "fonts/[hash][ext]",
+          filename: "assets/fonts/[hash][ext]",
         },
       },
       // 数据文件
@@ -104,5 +105,6 @@ module.exports = {
       template: paths.src + "/index.html", //template file
       filename: "index.html", // output file
     }),
+    new MiniCssExtractPlugin(),
   ],
 };

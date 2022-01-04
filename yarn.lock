@@ -2832,6 +2832,11 @@ loader-utils@^1.4.0:
     emojis-list "^3.0.0"
     json5 "^1.0.1"
 
+loadsh@^0.0.4:
+  version "0.0.4"
+  resolved "http://192.168.20.146:4873/loadsh/-/loadsh-0.0.4.tgz#5314babd12bb13315dde024a4ca70758c5489d2d"
+  integrity sha1-UxS6vRK7EzFd3gJKTKcHWMVInS0=
+
 locate-path@^5.0.0:
   version "5.0.0"
   resolved "http://192.168.20.146:4873/locate-path/-/locate-path-5.0.0.tgz#1afba396afd676a6d42504d0a67a3a7eb9f62aa0"
@@ -2939,6 +2944,13 @@ mimic-fn@^2.1.0:
   version "2.1.0"
   resolved "http://192.168.20.146:4873/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
   integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
+
+mini-css-extract-plugin@^2.4.5:
+  version "2.4.5"
+  resolved "http://192.168.20.146:4873/mini-css-extract-plugin/-/mini-css-extract-plugin-2.4.5.tgz#191d6c170226037212c483af1180b4010b7b9eef"
+  integrity sha1-GR1sFwImA3ISxIOvEYC0AQt7nu8=
+  dependencies:
+    schema-utils "^4.0.0"
 
 mini-svg-data-uri@^1.4.3:
   version "1.4.3"

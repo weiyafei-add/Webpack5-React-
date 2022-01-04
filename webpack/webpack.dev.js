@@ -13,7 +13,7 @@ module.exports = merge(common, {
       directory: path.join(__dirname, "dist"),
       publicPath: "/",
     }, // 指定被访问html页面所在目录的路径 webpack5将contentBase替换为static
-    open: true,
+    open: false,
     compress: true, // 启动gzip压缩
   },
 });
