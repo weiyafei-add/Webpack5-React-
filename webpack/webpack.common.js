@@ -3,6 +3,8 @@ const miniSvgDataUri = require("mini-svg-data-uri");
 const paths = require("./paths");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const cssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
+const dev = process.env.NODE_ENV === "development";
+
 module.exports = {
   resolve: {
     extensions: [".js", ".ts", ".tsx", ".jsx"],
@@ -28,7 +30,7 @@ module.exports = {
       {
         test: /\.less$/i,
         use: [
-          { loader: MiniCssExtractPlugin.loader },
+          dev ? "style-loader" : { loader: MiniCssExtractPlugin.loader },
           {
             loader: "css-loader",
             options: {
@@ -42,7 +44,7 @@ module.exports = {
       {
         test: /\.(s?[ca]ss)$/i,
         use: [
-          { loader: MiniCssExtractPlugin.loader },
+          dev ? "style-loader" : { loader: MiniCssExtractPlugin.loader },
           {
             loader: "css-loader",
             options: {

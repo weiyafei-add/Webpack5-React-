@@ -8,6 +8,10 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": false,
+    "strict": false,
+    "checkJs": true,
+    "alwaysStrict": false
   }
 }

@@ -1,0 +1,46 @@
+@prefix: virtual-scroll;
+li {
+  list-style: none;
+  text-align: center;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+.@{prefix}-container {
+  width: 800px;
+  height: 600px;
+  overflow-y: auto;
+  margin: 50px auto;
+  position: relative;
+  border: 1px solid #ccc;
+}
+.@{prefix}-phantom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.@{prefix}-list {
+  position: absolute;
+  width: 100%;
+}
+
+.@{prefix}-item {
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+  line-height: 50px;
+}
+
+.@{prefix}-head {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
